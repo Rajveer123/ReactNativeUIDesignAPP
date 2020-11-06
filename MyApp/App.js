@@ -10,7 +10,7 @@
 import React from 'react';
 import {
   StyleSheet,
-  ScrollView,
+  Platform,
   View,
   Image,
   Text,
@@ -24,14 +24,11 @@ let randomHex = () => {
   let color = rowBGColors[Math.floor(Math.random() * 3)];
   return color;
 }
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
+    <StatusBar barStyle="dark-content" />
+      <View style={styles.body}>
           <View style={styles.headerView}>
             <Text style={styles.cancelText}>Cancel</Text>
             <Text style={styles.addRemoveText}>Add/remove contacts</Text>
@@ -77,31 +74,27 @@ const App: () => React$Node = () => {
             }
             renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
             keyExtractor={(item, index) => index}
+            style={{marginBottom: Platform.OS == 'ios' ? 40 : 20}}
           /> 
           </View> 
           </View>
-        </ScrollView>
-    </>
+          </>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    top: 0,
-    flex: 1,
-    backgroundColor: "white",
-  },
   body: {
-    top: 0,
-    backgroundColor: 'white',
+    top:Platform.OS == 'ios' ? 20 : 0,
     flex: 1,
+    marginTop: 0,
+    backgroundColor: 'white',
   },
   headerView: {
-    marginTop: 20,
-    flex: 1,
+    marginTop: 40,
+    height:40,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   cancelText: {
     color: '#AEC2CF',
@@ -125,10 +118,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchView:{
-    marginTop: 40,
+    marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    flex: 1,
     flexDirection:'row',
     justifyContent:'flex-start',
     alignItems: 'center',
@@ -150,9 +142,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   profileView:{
-    marginTop: 30,
+    marginTop: 20,
     marginLeft: 20,
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -166,9 +157,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left:60,
-    height: 25,
-    width: 25,
-    backgroundColor:'white'
+    height: 26,
+    width: 26,
+    borderRadius:26/2,
+    
   },
   profile1:{
       position: 'absolute',
@@ -206,14 +198,12 @@ const styles = StyleSheet.create({
     padding: 10,
     fontWeight:'normal',
     fontSize: 16,
-    height: 44,
   },
   item2: {
     fontWeight:'bold',
     padding: 10,
-    fontWeight: '600',
     fontSize: 16,
-    height: 44,
+    color:'#22325D'
   },
   rightSideView:{
     height:24,
@@ -221,9 +211,7 @@ const styles = StyleSheet.create({
     borderRadius : 24/2,
     backgroundColor:'white',
     marginRight:20,
-  }  
-  
-  
+  },  
 });
 
 export default App;
