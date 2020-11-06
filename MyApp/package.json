@@ -3,15 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android-clean-run":"cd android && ./gradlew clean && cd .. && react-native run-android",
+    "android-clean-run": "cd android && ./gradlew clean && cd .. && react-native run-android",
     "ios-clean-run": "cd ios && xcodebuild clean  && cd .. && react-native run-ios",
     "reset-cache": "rm -rf node_modules/ && npm cache clear --force && watchman watch-del-all && npm i",
-    "open-emulator":"cd /Users/oteredesai/Library/Developer/Xamarin/android-sdk-macosx/emulator && ./emulator -avd nexus_5_r_11_0_-_api_30",
+    "open-emulator": "cd /Users/oteredesai/Library/Developer/Xamarin/android-sdk-macosx/emulator && ./emulator -avd nexus_5_r_11_0_-_api_30",
     "reset-adb": "cd /Users/oteredesai/Library/Developer/Xamarin/android-sdk-macosx/platform-tools && ./adb reverse tcp:8081 tcp:8081",
     "android-device": "adb reverse tcp:8081 tcp:8081 && react-native run-android",
     "generate-apk": "cd android && ./gradlew assembleRelease && open ./app/build/outputs/apk/",
     "install-apk": "cd android && ./gradlew installRelease",
-    "install-release-apk":"cd android && ./gradlew clean && cd .. && react-native run-android --variant=release",
+    "install-release-apk": "cd android && ./gradlew clean && cd .. && react-native run-android --variant=release",
     "android": "react-native run-android",
     "pod-install": "cd ios && pod install && cd ..",
     "ios": "react-native run-ios",
@@ -20,8 +20,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "add": "^2.0.6",
     "react": "16.13.1",
-    "react-native": "0.63.3"
+    "react-native": "0.63.3",
+    "react-native-gesture-handler": "^1.8.0",
+    "react-native-reanimated": "^1.13.1",
+    "react-native-router-flux": "^4.2.0",
+    "react-native-screens": "^2.13.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
