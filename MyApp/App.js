@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   headerView: {
-    marginTop: 40,
+    marginTop: Platform.OS == 'ios' ? 40 : 25,
     height:40,
     flexDirection: 'row',
     justifyContent: 'space-around',
